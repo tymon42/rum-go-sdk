@@ -192,5 +192,3 @@ func (q *Quorum) ApproveAnnouncedUser(groupId string, user *handlers.AnnouncedUs
 func (q *Quorum) ApproveAnnouncedProducer(groupId string, user *handlers.AnnouncedProducerListItem, removal bool) (*handlers.GrpProducerResult, error) {
 	return api.ApproveAnnouncedProducer(groupId, user, removal)
 }
-
-//
