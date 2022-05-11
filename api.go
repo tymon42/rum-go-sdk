@@ -1,10 +1,14 @@
-package rumgosdk
+package main
 
 import (
+	"encoding/json"
+	"errors"
+	"strings"
+
 	"github.com/rumsystem/quorum/cmd/cli/api"
 	qApi "github.com/rumsystem/quorum/pkg/chainapi/api"
 	"github.com/rumsystem/quorum/pkg/chainapi/handlers"
-	"strings"
+	"github.com/tymon42/rum-go-sdk/http"
 )
 
 type Quorum struct {
@@ -30,7 +34,17 @@ func Connect(apiServer string) *Quorum {
 
 // Get Node info
 func (q *Quorum) Node() (*api.NodeInfoStruct, error) {
-	return api.Node()
+	url := q.ApiServer + "/api/v1/node"
+	ret := api.NodeInfoStruct{}
+	body, err := http.HttpGet(url)
+	if err != nil {
+		return nil, err
+	}
+	err = json.Unmarshal(body, &ret)
+	if err != nil {
+		return nil, errors.New(string(body))
+	}
+	return &ret, nil
 }
 
 // Get Network info
