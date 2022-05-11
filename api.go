@@ -1,4 +1,4 @@
-package main
+package rumgosdk
 
 import (
 	"encoding/json"
