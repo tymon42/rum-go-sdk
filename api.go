@@ -1,7 +1,6 @@
 package rumgosdk
 
 import (
-	// "github.com/rumsystem/quorum/cmd/cli/model"
 	"github.com/rumsystem/quorum/cmd/cli/api"
 	qApi "github.com/rumsystem/quorum/pkg/chainapi/api"
 	"github.com/rumsystem/quorum/pkg/chainapi/handlers"
