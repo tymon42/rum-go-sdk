@@ -1,6 +1,6 @@
 module github.com/tymon42/rum-go-sdk
 
-go 1.17
+go 1.18
 
 require github.com/rumsystem/quorum v0.0.0-20220509152736-3f13c56041a6
 
