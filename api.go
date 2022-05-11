@@ -4,7 +4,7 @@ import (
 	// "github.com/rumsystem/quorum/cmd/cli/model"
 	"github.com/rumsystem/quorum/cmd/cli/api"
 	qApi "github.com/rumsystem/quorum/pkg/chainapi/api"
-		"github.com/rumsystem/quorum/pkg/chainapi/handlers"
+	"github.com/rumsystem/quorum/pkg/chainapi/handlers"
 	"strings"
 )
 
@@ -144,7 +144,6 @@ func (q *Quorum) GetGroupSeed(gid string) (*handlers.GroupSeed, error) {
 	return api.GetGroupSeed(gid)
 }
 
-
 // Do backup
 func (q *Quorum) DoBackup() (*api.BackupResult, error) {
 	return api.DoBackup()
@@ -195,4 +194,4 @@ func (q *Quorum) ApproveAnnouncedProducer(groupId string, user *handlers.Announc
 	return api.ApproveAnnouncedProducer(groupId, user, removal)
 }
 
-// 
+//
