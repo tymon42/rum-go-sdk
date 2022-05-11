@@ -1,11 +1,8 @@
-module rum-go-sdk
+module github.com/tymon42/rum-go-sdk
 
 go 1.17
 
-require (
-	github.com/rumsystem/quorum v0.0.0-20220509152736-3f13c56041a6
-	github.com/tymon42/rum-go-sdk v0.0.5
-)
+require github.com/rumsystem/quorum v0.0.0-20220509152736-3f13c56041a6
 
 require (
 	filippo.io/age v1.0.0 // indirect
