@@ -1,4 +1,4 @@
-module github.com/Tymon42/rum-go-sdk
+module github.com/tymon42/rum-go-sdk
 
 go 1.18
 
