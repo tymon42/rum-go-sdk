@@ -375,11 +375,11 @@ func (q *Quorum) TokenApply() (*api.TokenRespStruct, error) {
 }
 
 // Create content
-func (q *Quorum) CreateContent(groupId string, content string) (*api.ContentRespStruct, error) {
+func (q *Quorum) CreateContent(groupId string, name string, content string) (*api.ContentRespStruct, error) {
 	data := api.ContentReqStruct{
 		Object: api.ContentReqObjectStruct{
 			Content: content,
-			Name:    "",
+			Name:    name,
 			Type:    "Note",
 		},
 		Target: api.ContentReqTargetStruct{
