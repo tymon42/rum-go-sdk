@@ -27,7 +27,6 @@ func Connect(apiServer string) *Quorum {
 		}
 	}
 
-	api.ApiServer = apiServer
 	return &Quorum{
 		ApiServer: ApiServer,
 	}
@@ -80,7 +79,7 @@ func (q *Quorum) Ping() (res *map[string]api.PingInfoItemStruct, err error) {
 
 // Get groups
 func (q *Quorum) Groups() (groupsInfo *qApi.GroupInfoList, err error) {
-	url := api.ApiServer + "/api/v1/groups"
+	url := q.ApiServer + "/api/v1/groups"
 	ret := qApi.GroupInfoList{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -96,7 +95,7 @@ func (q *Quorum) Groups() (groupsInfo *qApi.GroupInfoList, err error) {
 // Get Content
 func (q *Quorum) Content(groupId string, num int, opt api.PagerOpt) (contents *[]api.ContentStruct, err error) {
 	url := fmt.Sprintf(
-		"%s/app/api/v1/group/%s/content?num=%d&reverse=%v", api.ApiServer, groupId, num, opt.Reverse)
+		"%s/app/api/v1/group/%s/content?num=%d&reverse=%v", q.ApiServer, groupId, num, opt.Reverse)
 	if opt.StartTrxId != "" {
 		url = fmt.Sprintf("%s&starttrx=%s", url, opt.StartTrxId)
 	}
@@ -115,7 +114,7 @@ func (q *Quorum) Content(groupId string, num int, opt api.PagerOpt) (contents *[
 // Force sync group
 func (q *Quorum) ForceSyncGroup(groupId string) (syncRes *api.GroupForceSyncRetStruct, err error) {
 	url := fmt.Sprintf(
-		"%s/api/v1/group/%s/startsync", api.ApiServer, groupId)
+		"%s/api/v1/group/%s/startsync", q.ApiServer, groupId)
 	ret := api.GroupForceSyncRetStruct{}
 	body, err := http.HttpPost(url, []byte(""))
 	if err != nil {
@@ -134,7 +133,7 @@ func (q *Quorum) ForceSyncGroup(groupId string) (syncRes *api.GroupForceSyncRetS
 // Get public queue
 func (q *Quorum) GetPubQueue(groupId string, trxId string, status string) (*handlers.PubQueueInfo, error) {
 	url := fmt.Sprintf(
-		"%s/api/v1/group/%s/pubqueue?trx=%s&status=%s", api.ApiServer, groupId, trxId, status)
+		"%s/api/v1/group/%s/pubqueue?trx=%s&status=%s", q.ApiServer, groupId, trxId, status)
 	ret := handlers.PubQueueInfo{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -149,7 +148,7 @@ func (q *Quorum) GetPubQueue(groupId string, trxId string, status string) (*hand
 
 // Public queue acknowledge
 func (q *Quorum) PubQueueAck(trxIds []string) ([]string, error) {
-	url := fmt.Sprintf("%s/api/v1/trx/ack", api.ApiServer)
+	url := fmt.Sprintf("%s/api/v1/trx/ack", q.ApiServer)
 	param := qApi.PubQueueAckPayload{trxIds}
 	payload, err := json.Marshal(&param)
 	if err != nil {
@@ -216,7 +215,7 @@ func (q *Quorum) ModifyGroupConfig(action, groupId, key, tp, value, memo string)
 		return nil, err
 	}
 
-	url := api.ApiServer + "/api/v1/group/appconfig"
+	url := q.ApiServer + "/api/v1/group/appconfig"
 	ret := handlers.AppConfigResult{}
 	body, err := http.HttpPost(url, json_data)
 	if err != nil {
@@ -231,7 +230,7 @@ func (q *Quorum) ModifyGroupConfig(action, groupId, key, tp, value, memo string)
 
 // Get group config list
 func (q *Quorum) GetGroupConfigList(groupId string) ([]*handlers.AppConfigKeyListItem, error) {
-	url := fmt.Sprintf("%s/api/v1/group/%s/config/keylist", api.ApiServer, groupId)
+	url := fmt.Sprintf("%s/api/v1/group/%s/config/keylist", q.ApiServer, groupId)
 	ret := []*handlers.AppConfigKeyListItem{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -246,7 +245,7 @@ func (q *Quorum) GetGroupConfigList(groupId string) ([]*handlers.AppConfigKeyLis
 
 // Get Group Config
 func (q *Quorum) GetGroupConfig(groupId, key string) (*handlers.AppConfigKeyItem, error) {
-	url := fmt.Sprintf("%s/api/v1/group/%s/config/%s", api.ApiServer, groupId, key)
+	url := fmt.Sprintf("%s/api/v1/group/%s/config/%s", q.ApiServer, groupId, key)
 	ret := handlers.AppConfigKeyItem{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -272,7 +271,7 @@ func (q *Quorum) UpdateChainConfig(groupId, tp, config, memo string) (*handlers.
 		return nil, err
 	}
 
-	url := api.ApiServer + "/api/v1/group/chainconfig"
+	url := q.ApiServer + "/api/v1/group/chainconfig"
 	ret := handlers.ChainConfigResult{}
 	body, err := http.HttpPost(url, json_data)
 	if err != nil {
@@ -287,7 +286,7 @@ func (q *Quorum) UpdateChainConfig(groupId, tp, config, memo string) (*handlers.
 
 // Get chain auth mode
 func (q *Quorum) GetChainAuthMode(groupId, trxType string) (*handlers.TrxAuthItem, error) {
-	url := fmt.Sprintf("%s/api/v1/group/%s/trx/auth/%s", api.ApiServer, groupId, trxType)
+	url := fmt.Sprintf("%s/api/v1/group/%s/trx/auth/%s", q.ApiServer, groupId, trxType)
 	ret := handlers.TrxAuthItem{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -302,7 +301,7 @@ func (q *Quorum) GetChainAuthMode(groupId, trxType string) (*handlers.TrxAuthIte
 
 // Get chain allow list
 func (q *Quorum) GetChainAllowList(groupId string) ([]*handlers.ChainSendTrxRuleListItem, error) {
-	url := fmt.Sprintf("%s/api/v1/group/%s/trx/allowlist", api.ApiServer, groupId)
+	url := fmt.Sprintf("%s/api/v1/group/%s/trx/allowlist", q.ApiServer, groupId)
 	ret := []*handlers.ChainSendTrxRuleListItem{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -317,7 +316,7 @@ func (q *Quorum) GetChainAllowList(groupId string) ([]*handlers.ChainSendTrxRule
 
 // Get chain deny list
 func (q *Quorum) GetChainDenyList(groupId string) ([]*handlers.ChainSendTrxRuleListItem, error) {
-	url := fmt.Sprintf("%s/api/v1/group/%s/trx/denylist", api.ApiServer, groupId)
+	url := fmt.Sprintf("%s/api/v1/group/%s/trx/denylist", q.ApiServer, groupId)
 	ret := []*handlers.ChainSendTrxRuleListItem{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -346,7 +345,7 @@ func (q *Quorum) Nick(groupId string, nick string) (*api.NickRespStruct, error) 
 	if err != nil {
 		return nil, err
 	}
-	url := api.ApiServer + "/api/v1/group/profile"
+	url := q.ApiServer + "/api/v1/group/profile"
 	ret := api.NickRespStruct{}
 	body, err := http.HttpPost(url, json_data)
 	if err != nil {
@@ -361,7 +360,7 @@ func (q *Quorum) Nick(groupId string, nick string) (*api.NickRespStruct, error) 
 
 // Token apply
 func (q *Quorum) TokenApply() (*api.TokenRespStruct, error) {
-	url := api.ApiServer + "/app/api/v1/token/apply"
+	url := q.ApiServer + "/app/api/v1/token/apply"
 	ret := api.TokenRespStruct{}
 	body, err := http.HttpPost(url, []byte(""))
 	if err != nil {
@@ -388,7 +387,7 @@ func (q *Quorum) CreateContent(groupId string, name string, content string) (*ap
 		},
 		Type: "Add",
 	}
-	url := api.ApiServer + "/api/v1/group/content"
+	url := q.ApiServer + "/api/v1/group/content"
 	ret := api.ContentRespStruct{}
 	json_data, err := json.Marshal(data)
 	if err != nil {
@@ -412,13 +411,13 @@ func (q *Quorum) CreateGroup(data api.CreateGroupReqStruct) ([]byte, error) {
 		return nil, err
 	}
 
-	url := api.ApiServer + "/api/v1/group"
+	url := q.ApiServer + "/api/v1/group"
 	return http.HttpPost(url, json_data)
 }
 
 // Get group seed
 func (q *Quorum) GetGroupSeed(gid string) (*handlers.GroupSeed, error) {
-	url := fmt.Sprintf("%s/api/v1/group/%s/seed", api.ApiServer, gid)
+	url := fmt.Sprintf("%s/api/v1/group/%s/seed", q.ApiServer, gid)
 	ret := handlers.GroupSeed{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -433,7 +432,7 @@ func (q *Quorum) GetGroupSeed(gid string) (*handlers.GroupSeed, error) {
 
 // Do backup
 func (q *Quorum) DoBackup() (*api.BackupResult, error) {
-	url := fmt.Sprintf("%s/api/v1/backup", api.ApiServer)
+	url := fmt.Sprintf("%s/api/v1/backup", q.ApiServer)
 	ret := api.BackupResult{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -449,7 +448,7 @@ func (q *Quorum) DoBackup() (*api.BackupResult, error) {
 // Leave group
 func (q *Quorum) LeaveGroup(gid string) (*api.GroupLeaveRetStruct, error) {
 	data := api.LeaveGroupReqStruct{gid}
-	url := api.ApiServer + "/api/v1/group/leave"
+	url := q.ApiServer + "/api/v1/group/leave"
 	ret := api.GroupLeaveRetStruct{}
 
 	json_data, err := json.Marshal(data)
@@ -471,7 +470,7 @@ func (q *Quorum) LeaveGroup(gid string) (*api.GroupLeaveRetStruct, error) {
 // Delete group
 func (q *Quorum) DeleteGroup(groupId string) (*api.GroupDelRetStruct, error) {
 	data := api.DeleteGroupReqStruct{groupId}
-	url := api.ApiServer + "/api/v1/group"
+	url := q.ApiServer + "/api/v1/group"
 	ret := api.GroupDelRetStruct{}
 	json_data, err := json.Marshal(data)
 	if err != nil {
@@ -491,7 +490,7 @@ func (q *Quorum) DeleteGroup(groupId string) (*api.GroupDelRetStruct, error) {
 
 // Get Trx infomation
 func (q *Quorum) TrxInfo(groupId string, trxId string) (trx *api.TrxStruct, err error) {
-	url := fmt.Sprintf("%s/api/v1/trx/%s/%s", api.ApiServer, groupId, trxId)
+	url := fmt.Sprintf("%s/api/v1/trx/%s/%s", q.ApiServer, groupId, trxId)
 	ret := api.TrxStruct{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -506,7 +505,7 @@ func (q *Quorum) TrxInfo(groupId string, trxId string) (trx *api.TrxStruct, err 
 
 // Join group
 func (q *Quorum) JoinGroup(seed string) (*api.JoinRespStruct, error) {
-	url := api.ApiServer + "/api/v1/group/join"
+	url := q.ApiServer + "/api/v1/group/join"
 	ret := api.JoinRespStruct{}
 	body, err := http.HttpPost(url, []byte(seed))
 	if err != nil {
@@ -521,7 +520,7 @@ func (q *Quorum) JoinGroup(seed string) (*api.JoinRespStruct, error) {
 
 // Get block by Id
 func (q *Quorum) GetBlockById(groupId string, id string) (*api.BlockStruct, error) {
-	url := fmt.Sprintf("%s/api/v1/block/%s/%s", api.ApiServer, groupId, id)
+	url := fmt.Sprintf("%s/api/v1/block/%s/%s", q.ApiServer, groupId, id)
 	ret := api.BlockStruct{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -536,7 +535,7 @@ func (q *Quorum) GetBlockById(groupId string, id string) (*api.BlockStruct, erro
 
 // Announced User
 func (q *Quorum) AnnouncedUsers(groupId string) ([]*handlers.AnnouncedUserListItem, error) {
-	url := fmt.Sprintf("%s/api/v1/group/%s/announced/users", api.ApiServer, groupId)
+	url := fmt.Sprintf("%s/api/v1/group/%s/announced/users", q.ApiServer, groupId)
 	ret := []*handlers.AnnouncedUserListItem{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -551,7 +550,7 @@ func (q *Quorum) AnnouncedUsers(groupId string) ([]*handlers.AnnouncedUserListIt
 
 // Announced producers
 func (q *Quorum) AnnouncedProducers(groupId string) ([]*handlers.AnnouncedProducerListItem, error) {
-	url := fmt.Sprintf("%s/api/v1/group/%s/announced/producers", api.ApiServer, groupId)
+	url := fmt.Sprintf("%s/api/v1/group/%s/announced/producers", q.ApiServer, groupId)
 	ret := []*handlers.AnnouncedProducerListItem{}
 	body, err := http.HttpGet(url)
 	if err != nil {
@@ -567,7 +566,7 @@ func (q *Quorum) AnnouncedProducers(groupId string) ([]*handlers.AnnouncedProduc
 // Approve announced user
 func (q *Quorum) ApproveAnnouncedUser(groupId string, user *handlers.AnnouncedUserListItem, removal bool) (*api.ApproveGrpUserResult, error) {
 	ret := &api.ApproveGrpUserResult{}
-	url := api.ApiServer + "/api/v1/group/user"
+	url := q.ApiServer + "/api/v1/group/user"
 
 	action := "add"
 	if removal {
@@ -599,7 +598,7 @@ func (q *Quorum) ApproveAnnouncedUser(groupId string, user *handlers.AnnouncedUs
 // Approve announced producer
 func (q *Quorum) ApproveAnnouncedProducer(groupId string, user *handlers.AnnouncedProducerListItem, removal bool) (*handlers.GrpProducerResult, error) {
 	ret := &handlers.GrpProducerResult{}
-	url := api.ApiServer + "/api/v1/group/producer"
+	url := q.ApiServer + "/api/v1/group/producer"
 
 	action := "add"
 	if removal {
