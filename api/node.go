@@ -35,5 +35,9 @@ func (c ReqClient) Ping() (res *map[string]api.PingInfoItemStruct, err error) {
 	return &ret, nil
 }
 
-// Stats get network stats summary
-func (c ReqClient) Stats() ()
+// TODO: Stats get network stats summary
+func (c ReqClient) Stats() () {
+	return
+}
+
+// AddPeers add peers
