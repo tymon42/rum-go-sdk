@@ -17,5 +17,11 @@ Rum System is flexable de-communicating protocol. You can treat it like well-bac
 
 # How to start?  
 ```
+import (
+    "github.com/tymon42/rum-go-sdk"
+)
+
 rum_client := rumgosdk.Connect('http://127.0.0.1:8002')
+
 rum_client.Node()
+```
