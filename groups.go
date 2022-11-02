@@ -21,7 +21,7 @@ func (q *Quorum) ClearGroupData() (err error) {
 
 // PostToGroup posts object to group, /api/v1/group/content
 // param: pbActivity
-// return: handlersTrxResult
+// return: HandlersTrxResult
 func (q *Quorum) PostToGroup(param *model.PbActivity) (res *model.HandlersTrxResult, err error) {
 	url := q.ApiServer + "/api/v1/group/content"
 	q.HttpClient.R().SetBody(param).SetResult(res).SetError(err).Post(url)
@@ -39,7 +39,7 @@ func (q *Quorum) JoinGroup(param model.HandlersGroupSeed) (res *model.ApiJoinGro
 
 // LeaveGroup leaves group, /api/v1/group/leave
 // param: handlersGroupSeed
-// return: handlersLeaveGroupResult
+// return: HandlersLeaveGroupResult
 func (q *Quorum) LeaveGroup(param model.HandlersGroupSeed) (res *model.HandlersLeaveGroupResult, err error) {
 	url := q.ApiServer + "/api/v1/group/leave"
 	q.HttpClient.R().SetBody(param).SetResult(res).SetError(err).Post(url)
