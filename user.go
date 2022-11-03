@@ -7,41 +7,61 @@ import (
 // AnnounceUserPubkey announces user pubkey, /api/v1/group/announce
 // param: handlersAnnounceParam
 // return: HandlersAnnounceResult
-func (q *Quorum) AnnounceUserPubkey(param model.HandlersAnnounceParam) (res *model.HandlersAnnounceResult, err error) {
+func (q *Quorum) AnnounceUserPubkey(param model.HandlersAnnounceParam) (*model.HandlersAnnounceResult, error) {
 	url := q.ApiServer + "/api/v1/group/announce"
-	q.HttpClient.R().SetBody(param).SetResult(res).SetError(err).Post(url)
-	return res, err
+	res := &model.HandlersAnnounceResult{}
+	_, err := q.HttpClient.R().SetBody(param).SetResult(res).Post(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // UpdateProfile updates profile, /api/v1/group/profile
 // param: pbActivity
 // return: HandlersUpdateProfileResult
-func (q *Quorum) UpdateProfile(param model.PbActivity) (res *model.HandlersUpdateProfileResult, err error) {
+func (q *Quorum) UpdateProfile(param model.PbActivity) (*model.HandlersUpdateProfileResult, error) {
 	url := q.ApiServer + "/api/v1/group/profile"
-	q.HttpClient.R().SetBody(param).SetResult(res).SetError(err).Post(url)
-	return res, err
+	res := &model.HandlersUpdateProfileResult{}
+	_, err := q.HttpClient.R().SetBody(param).SetResult(res).Post(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // GetAnnouncedGroupProducer gets announced group producer, /api/v1/group/{group_id}/producers
 // return []HandlersAnnouncedProdcerListItempbGroupProducer
-func (q *Quorum) GetAnnouncedGroupProducer(group_id string) (res []model.HandlersAnnouncedProducerListItem, err error) {
+func (q *Quorum) GetAnnouncedGroupProducer(group_id string) ([]model.HandlersAnnouncedProducerListItem, error) {
 	url := q.ApiServer + "/api/v1/group/" + group_id + "/producers"
-	q.HttpClient.R().SetResult(res).SetError(err).Get(url)
-	return res, err
+	res := []model.HandlersAnnouncedProducerListItem{}
+	_, err := q.HttpClient.R().SetResult(res).Get(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // GetAnnouncedGroupUser gets announced group user, /api/v1/group/{group_id}/announced/user/{sign_pubkey}
 // return: HandlersAnnouncedUserListResult
-func (q *Quorum) GetAnnouncedGroupUser(group_id string, sign_pubkey string) (res *model.HandlersAnnouncedUserListItem, err error) {
+func (q *Quorum) GetAnnouncedGroupUser(group_id string, sign_pubkey string) (*model.HandlersAnnouncedUserListItem, error) {
 	url := q.ApiServer + "/api/v1/group/" + group_id + "/announced/user/" + sign_pubkey
-	q.HttpClient.R().SetResult(res).SetError(err).Get(url)
-	return res, err
+	res := &model.HandlersAnnouncedUserListItem{}
+	_, err := q.HttpClient.R().SetResult(res).Get(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // GetAnnouncedGroupUsers gets announced group users, /api/v1/group/{group_id}/announced/users
 // return: HandlersAnnouncedUserListItem
-func (q *Quorum) GetAnnouncedGroupUsers(group_id string) (res *model.HandlersAnnouncedUserListItem, err error) {
+func (q *Quorum) GetAnnouncedGroupUsers(group_id string) (*model.HandlersAnnouncedUserListItem, error) {
 	url := q.ApiServer + "/api/v1/group/" + group_id + "/announced/users"
-	q.HttpClient.R().SetResult(res).SetError(err).Get(url)
-	return res, err
+	res := &model.HandlersAnnouncedUserListItem{}
+	_, err := q.HttpClient.R().SetResult(res).Get(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }

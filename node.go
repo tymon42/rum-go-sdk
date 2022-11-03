@@ -3,43 +3,63 @@ package rumgosdk
 import "github.com/tymon42/rum-go-sdk/model"
 
 // GetNode info, /api/v1/node
-func (q *Quorum) GetNode() (res *model.HandlersNodeInfo, err error) {
+func (q *Quorum) GetNode() (*model.HandlersNodeInfo, error) {
 	url := q.ApiServer + "/api/v1/node"
-	q.HttpClient.R().SetResult(res).SetError(err).Get(url)
-	return res, err
+	res := &model.HandlersNodeInfo{}
+	_, err := q.HttpClient.R().SetResult(res).Get(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // GetNetwork gets node network info, /api/v1/network
-func (q *Quorum) GetNetwork() (res *model.HandlersNetworkInfo, err error) {
+func (q *Quorum) GetNetwork() (*model.HandlersNetworkInfo, error) {
 	url := q.ApiServer + "/api/v1/network"
-	q.HttpClient.R().SetResult(res).SetError(err).Get(url)
-	return res, err
+	res := &model.HandlersNetworkInfo{}
+	_, err := q.HttpClient.R().SetResult(res).Get(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // AddPeers adds peers to the node, /api/v1/network/peers
-func (q *Quorum) AddPeers(peers []string) (err error) {
+func (q *Quorum) AddPeers(peers []string) error {
 	url := q.ApiServer + "/api/v1/network/peers"
-	q.HttpClient.R().SetBody(peers).SetError(err).Post(url)
+	_, err := q.HttpClient.R().SetBody(peers).Post(url)
 	return err
 }
 
 // PingPeers pings peers, /api/v1/network/peers/ping
-func (q *Quorum) PingPeers() (res *model.ApiAddrProtoPair, err error) {
+func (q *Quorum) PingPeers() (*model.ApiAddrProtoPair, error) {
 	url := q.ApiServer + "/api/v1/network/peers/ping"
-	q.HttpClient.R().SetResult(res).SetError(err).Get(url)
-	return res, err
+	res := &model.ApiAddrProtoPair{}
+	_, err := q.HttpClient.R().SetResult(res).Get(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // AddRelayServers adds relay servers to the node, /api/v1/network/relay
-func (q *Quorum) AddRelayServers(relayServers []string) (res *model.ApiAddRelayServersResp, err error) {
+func (q *Quorum) AddRelayServers(relayServers []string) (*model.ApiAddRelayServersResp, error) {
 	url := q.ApiServer + "/api/v1/network/relay"
-	q.HttpClient.R().SetBody(relayServers).SetResult(res).Post(url)
-	return res, err
+	res := &model.ApiAddRelayServersResp{}
+	_, err := q.HttpClient.R().SetBody(relayServers).SetResult(res).Post(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
 
 // PubsubPing pings pubsub, /api/v1/psping
-func (q *Quorum) PubsubPing(data model.ApiPsPingParam) (res *model.HandlersPingResp, err error) {
+func (q *Quorum) PubsubPing(data model.ApiPsPingParam) (*model.HandlersPingResp, error) {
 	url := q.ApiServer + "/api/v1/psping"
-	q.HttpClient.R().SetBody(data).SetResult(res).Post(url)
-	return res, err
+	res := &model.HandlersPingResp{}
+	_, err := q.HttpClient.R().SetBody(data).SetResult(res).Post(url)
+	if err != nil {
+		return nil, err
+	}
+	return res, nil
 }
