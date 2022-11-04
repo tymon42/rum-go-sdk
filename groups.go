@@ -52,10 +52,10 @@ func (q *Quorum) JoinGroup(param model.HandlersGroupSeed) (*model.ApiJoinGroupRe
 // JoinGroupByNewSeed joins group by new seed, /api/v1/group/join
 // param: seed
 // return: apiJoinGroupResult
-func (q *Quorum) JoinGroupV2(seed string) (*model.ApiJoinGroupResult, error) {
+func (q *Quorum) JoinGroupV2(param *model.HandlersJoinGroupParamV2) (*model.ApiJoinGroupResult, error) {
 	url := q.ApiServer + "/api/v1/group/join"
 	res := &model.ApiJoinGroupResult{}
-	_, err := q.HttpClient.R().SetBody(map[string]string{"seed": seed}).SetResult(res).Post(url)
+	_, err := q.HttpClient.R().SetBody(param).SetResult(res).Post(url)
 	if err != nil {
 		return nil, err
 	}
