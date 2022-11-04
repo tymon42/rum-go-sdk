@@ -1,7 +1,7 @@
 # [WIP]rum-go-sdk  
-
-### WIP
 > ‼️ Cause the high speed of quorum evolution, this SDK may not be 100% suitable with latest quorum version.  
+
+WIP:
 - [ ] Management  
 - [ ] Group  
 - [ ] Keystore  
@@ -9,7 +9,7 @@
 - [ ] Apps
 
 
-# ❓ What is it?  
+# What is it?  
 This is a third party quorum SDK in golang. 
 
 ## What is rum?  
