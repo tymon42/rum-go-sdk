@@ -1,5 +1,5 @@
 # [WIP]rum-go-sdk  
-> ‼️ Cause the high speed of quorum evolution, this SDK may not be 100% suitable with latest quorum version.  
+> ‼️ Because of the high speed of quorum evolution, this SDK may not be 100% suitable with latest quorum version.  
 
 WIP:
 - [ ] Management  
