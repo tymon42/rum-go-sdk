@@ -1,4 +1,4 @@
-# [WIP]rum-go-sdk  
+# rum-go-sdk  
 > ‼️ Because of the high speed of quorum evolution, this SDK may not be 100% suitable with latest quorum version.  
 
 # What is it?  
