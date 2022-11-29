@@ -1,6 +1,7 @@
 package rumgosdk
 
 import (
+	"encoding/json"
 	"fmt"
 
 	"github.com/tymon42/rum-go-sdk/model"
@@ -9,9 +10,9 @@ import (
 // GetGroupContents gets contents  in a group, /app/api/v1/group/{group_id}/contents
 // Param: 1. group_id, 2. num, 3. reverse, 4. starttrx, 5. includestarttrx, 6. nonce, 7. appapiSenderList
 // Return: appapiGroupContentObjectItem
-func (q *Quorum) GetGroupContents(groupID string, num int, reverse string, starttrx string, includestarttrx string, nonce int, appapiSenderList model.AppapiSenderList) ([]*model.AppapiGroupContentObjectItem, error) {
+func (q *Quorum) GetGroupContents(groupID string, num int, reverse string, starttrx string, includestarttrx string, nonce int, appapiSenderList model.AppapiSenderList) ([]model.AppapiGroupContentObjectItem, error) {
 	url := q.ApiServer + "/app/api/v1/group/" + groupID + "/content"
-	var res []*model.AppapiGroupContentObjectItem
+	res := []model.AppapiGroupContentObjectItem{}
 	resp, err := q.HttpClient.R().SetQueryParams(map[string]string{
 		"num":             fmt.Sprint(num),
 		"reverse":         reverse,
@@ -22,9 +23,11 @@ func (q *Quorum) GetGroupContents(groupID string, num int, reverse string, start
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(resp)
-	fmt.Println(res)
-	return res, err
+
+	detailsEntity := []model.AppapiGroupContentObjectItem{}
+	err = json.Unmarshal(resp.Body(), &detailsEntity)
+
+	return detailsEntity, err
 }
 
 // CreateToken creates a new auth token, only allow access from localhost, /app/api/v1/token/create
