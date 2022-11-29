@@ -2,28 +2,28 @@ package rumgosdk
 
 import (
 	"fmt"
-	"strconv"
 
+	"github.com/go-resty/resty/v2"
 	"github.com/tymon42/rum-go-sdk/model"
 )
 
 // GetGroupContents gets contents  in a group, /app/api/v1/group/{group_id}/contents
 // Param: 1. group_id, 2. num, 3. reverse, 4. starttrx, 5. includestarttrx, 6. nonce, 7. appapiSenderList
 // Return: appapiGroupContentObjectItem
-func (q *Quorum) GetGroupContents(groupID string, num int, reverse bool, starttrx string, includestarttrx string, nonce int, appapiSenderList *model.AppapiSenderList) ([]*model.AppapiGroupContentObjectItem, error) {
-	url := q.ApiServer + "/app/api/v1/group/" + groupID + "/contents"
+func (q *Quorum) GetGroupContents(groupID string, num int, reverse string, starttrx string, includestarttrx string, nonce int) (*resty.Response, error) {
+	url := q.ApiServer + "/app/api/v1/group/" + groupID + "/content"
 	var res []*model.AppapiGroupContentObjectItem
-	_, err := q.HttpClient.R().SetQueryParams(map[string]string{
+	response, err := q.HttpClient.R().SetQueryParams(map[string]string{
 		"num":             fmt.Sprint(num),
-		"reverse":         strconv.FormatBool(reverse),
+		"reverse":         reverse,
 		"starttrx":        starttrx,
-		"includestarttrx": string(includestarttrx),
+		"includestarttrx": includestarttrx,
 		"nonce":           fmt.Sprint(nonce),
-	}).SetBody(appapiSenderList).SetResult(res).Get(url)
+	}).SetResult(res).Post(url)
 	if err != nil {
 		return nil, err
 	}
-	return res, err
+	return response, err
 }
 
 // CreateToken creates a new auth token, only allow access from localhost, /app/api/v1/token/create
