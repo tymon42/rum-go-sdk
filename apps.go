@@ -1,6 +1,7 @@
 package rumgosdk
 
 import (
+	"fmt"
 	"strconv"
 
 	"github.com/tymon42/rum-go-sdk/model"
@@ -13,11 +14,11 @@ func (q *Quorum) GetGroupContents(groupID string, num int, reverse bool, starttr
 	url := q.ApiServer + "/app/api/v1/group/" + groupID + "/contents"
 	var res []*model.AppapiGroupContentObjectItem
 	_, err := q.HttpClient.R().SetQueryParams(map[string]string{
-		"num":             string(num),
+		"num":             fmt.Sprint(num),
 		"reverse":         strconv.FormatBool(reverse),
 		"starttrx":        starttrx,
 		"includestarttrx": string(includestarttrx),
-		"nonce":           string(nonce),
+		"nonce":           fmt.Sprint(nonce),
 	}).SetBody(appapiSenderList).SetResult(res).Get(url)
 	if err != nil {
 		return nil, err
