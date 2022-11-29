@@ -11,7 +11,7 @@ package model
 
 // HandlersAddPeerResult struct for HandlersAddPeerResult
 type HandlersAddPeerResult struct {
-	ErrCount  int32             `json:"err_count,omitempty"`
+	ErrCount  int64             `json:"err_count,omitempty"`
 	Error     map[string]string `json:"error,omitempty"`
-	SuccCount int32             `json:"succ_count,omitempty"`
+	SuccCount int64             `json:"succ_count,omitempty"`
 }

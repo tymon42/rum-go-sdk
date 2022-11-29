@@ -11,12 +11,12 @@ package model
 
 // PbLink struct for PbLink
 type PbLink struct {
-	Height    int32    `json:"height,omitempty"`
+	Height    int64    `json:"height,omitempty"`
 	Href      string   `json:"href,omitempty"`
 	Hreflang  string   `json:"hreflang,omitempty"`
 	MediaType string   `json:"mediaType,omitempty"`
 	Name      string   `json:"name,omitempty"`
 	Preview   PbObject `json:"preview,omitempty"`
 	Rel       []string `json:"rel,omitempty"`
-	Width     int32    `json:"width,omitempty"`
+	Width     int64    `json:"width,omitempty"`
 }

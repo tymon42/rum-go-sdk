@@ -11,5 +11,5 @@ package model
 
 // HandlersPingResp struct for HandlersPingResp
 type HandlersPingResp struct {
-	Ttl []int32 `json:"ttl,omitempty"`
+	Ttl []int64 `json:"ttl,omitempty"`
 }

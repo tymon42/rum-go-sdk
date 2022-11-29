@@ -11,16 +11,16 @@ package model
 
 // PbTrx struct for PbTrx
 type PbTrx struct {
-	Data         []int32 `json:"Data,omitempty"`
-	Expired      int32   `json:"Expired,omitempty"`
+	Data         []int64 `json:"Data,omitempty"`
+	Expired      int64   `json:"Expired,omitempty"`
 	GroupId      string  `json:"GroupId,omitempty"`
-	Nonce        int32   `json:"Nonce,omitempty"`
-	ResendCount  int32   `json:"ResendCount,omitempty"`
+	Nonce        int64   `json:"Nonce,omitempty"`
+	ResendCount  int64   `json:"ResendCount,omitempty"`
 	SenderPubkey string  `json:"SenderPubkey,omitempty"`
-	SenderSign   []int32 `json:"SenderSign,omitempty"`
-	StorageType  int32   `json:"StorageType,omitempty"`
+	SenderSign   []int64 `json:"SenderSign,omitempty"`
+	StorageType  int64   `json:"StorageType,omitempty"`
 	TimeStamp    string  `json:"TimeStamp,omitempty"`
 	TrxId        string  `json:"TrxId,omitempty"`
-	Type         int32   `json:"Type,omitempty"`
+	Type         int64   `json:"Type,omitempty"`
 	Version      string  `json:"Version,omitempty"`
 }

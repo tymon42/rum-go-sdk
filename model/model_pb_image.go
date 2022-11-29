@@ -11,7 +11,7 @@ package model
 
 // PbImage struct for PbImage
 type PbImage struct {
-	Content   []int32 `json:"content,omitempty"`
+	Content   []int64 `json:"content,omitempty"`
 	Id        string  `json:"id,omitempty"`
 	MediaType string  `json:"mediaType,omitempty"`
 	Name      string  `json:"name,omitempty"`

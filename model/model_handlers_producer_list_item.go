@@ -11,9 +11,9 @@ package model
 
 // HandlersProducerListItem struct for HandlersProducerListItem
 type HandlersProducerListItem struct {
-	BlockProduced  int32  `json:"blockProduced,omitempty"`
+	BlockProduced  int64  `json:"blockProduced,omitempty"`
 	OwnerPubkey    string `json:"ownerPubkey,omitempty"`
 	OwnerSign      string `json:"ownerSign,omitempty"`
 	ProducerPubkey string `json:"producerPubkey,omitempty"`
-	TimeStamp      int32  `json:"timeStamp,omitempty"`
+	TimeStamp      int64  `json:"timeStamp,omitempty"`
 }

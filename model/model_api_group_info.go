@@ -19,8 +19,8 @@ type ApiGroupInfo struct {
 	GroupName      string          `json:"group_name"`
 	GroupStatus    string          `json:"group_status"`
 	HighestBlockId string          `json:"highest_block_id"`
-	HighestHeight  int32           `json:"highest_height"`
-	LastUpdated    int32           `json:"last_updated"`
+	HighestHeight  int64           `json:"highest_height"`
+	LastUpdated    int64           `json:"last_updated"`
 	OwnerPubkey    string          `json:"owner_pubkey"`
 	SnapshotInfo   ApiSnapshotInfo `json:"snapshot_info,omitempty"`
 	UserEthAddr    string          `json:"user_eth_addr"`

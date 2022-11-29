@@ -12,9 +12,9 @@ package model
 // ApiSnapshotInfo struct for ApiSnapshotInfo
 type ApiSnapshotInfo struct {
 	HighestBlockId    string `json:"highestBlockId,omitempty"`
-	HighestHeight     int32  `json:"highestHeight,omitempty"`
-	Nonce             int32  `json:"nonce,omitempty"`
+	HighestHeight     int64  `json:"highestHeight,omitempty"`
+	Nonce             int64  `json:"nonce,omitempty"`
 	SenderPubkey      string `json:"senderPubkey,omitempty"`
 	SnapshotPackageId string `json:"snapshotPackageId,omitempty"`
-	TimeStamp         int32  `json:"timeStamp,omitempty"`
+	TimeStamp         int64  `json:"timeStamp,omitempty"`
 }

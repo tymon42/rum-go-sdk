@@ -15,7 +15,7 @@ type HandlersAppConfigKeyItem struct {
 	Name        string `json:"name,omitempty"`
 	OwnerPubkey string `json:"ownerPubkey,omitempty"`
 	OwnerSign   string `json:"ownerSign,omitempty"`
-	TimeStamp   int32  `json:"timeStamp,omitempty"`
+	TimeStamp   int64  `json:"timeStamp,omitempty"`
 	Type        string `json:"type,omitempty"`
 	Value       string `json:"value,omitempty"`
 }

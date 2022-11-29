@@ -15,6 +15,6 @@ type HandlersChainSendTrxRuleListItem struct {
 	GroupOwnerSign   string   `json:"groupOwnerSign"`
 	Memo             string   `json:"memo,omitempty"`
 	Pubkey           string   `json:"pubkey"`
-	TimeStamp        int32    `json:"timeStamp"`
+	TimeStamp        int64    `json:"timeStamp"`
 	TrxType          []string `json:"trxType"`
 }

@@ -15,12 +15,12 @@ type ApiSignTxParam struct {
 	ChainId string `json:"chain_id"`
 	// Data hex encode string, include prefix string \"0x\"
 	Data     string `json:"data"`
-	GasLimit int32  `json:"gas_limit,omitempty"`
+	GasLimit int64  `json:"gas_limit,omitempty"`
 	// GasPrice string, the number prefix determines the actual base
 	GasPrice string `json:"gas_price,omitempty"`
 	Keyalias string `json:"keyalias,omitempty"`
 	Keyname  string `json:"keyname,omitempty"`
-	Nonce    int32  `json:"nonce,omitempty"`
+	Nonce    int64  `json:"nonce,omitempty"`
 	// To eth address, e.g.: 0xab...
 	To string `json:"to"`
 	// Value string, the number prefix determines the actual base

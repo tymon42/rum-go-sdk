@@ -13,11 +13,11 @@ package model
 type PbBlock struct {
 	BlockId        string  `json:"BlockId,omitempty"`
 	GroupId        string  `json:"GroupId,omitempty"`
-	Hash           []int32 `json:"Hash,omitempty"`
+	Hash           []int64 `json:"Hash,omitempty"`
 	PrevBlockId    string  `json:"PrevBlockId,omitempty"`
-	PreviousHash   []int32 `json:"PreviousHash,omitempty"`
+	PreviousHash   []int64 `json:"PreviousHash,omitempty"`
 	ProducerPubKey string  `json:"ProducerPubKey,omitempty"`
-	Signature      []int32 `json:"Signature,omitempty"`
+	Signature      []int64 `json:"Signature,omitempty"`
 	TimeStamp      string  `json:"TimeStamp,omitempty"`
 	Trxs           []PbTrx `json:"Trxs,omitempty"`
 }

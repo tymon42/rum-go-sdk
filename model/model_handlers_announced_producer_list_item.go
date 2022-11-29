@@ -16,5 +16,5 @@ type HandlersAnnouncedProducerListItem struct {
 	AnnouncerSign   string `json:"announcerSign"`
 	Memo            string `json:"memo"`
 	Result          string `json:"result"`
-	TimeStamp       int32  `json:"timeStamp"`
+	TimeStamp       int64  `json:"timeStamp"`
 }

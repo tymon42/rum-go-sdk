@@ -11,8 +11,8 @@ package model
 
 // PbFile struct for PbFile
 type PbFile struct {
-	Compression int32   `json:"compression,omitempty"`
-	Content     []int32 `json:"content,omitempty"`
+	Compression int64   `json:"compression,omitempty"`
+	Content     []int64 `json:"content,omitempty"`
 	Id          string  `json:"id,omitempty"`
 	MediaType   string  `json:"mediaType,omitempty"`
 	Name        string  `json:"name,omitempty"`
