@@ -11,9 +11,9 @@ package model
 
 // AppapiGroupContentObjectItem struct for AppapiGroupContentObjectItem
 type AppapiGroupContentObjectItem struct {
-	Content   string `json:"content,omitempty"`
-	Publisher string `json:"publisher,omitempty"`
-	TimeStamp int64  `json:"timeStamp,omitempty"`
-	TrxId     string `json:"trxId,omitempty"`
-	TypeUrl   string `json:"typeUrl,omitempty"`
+	Content   interface{} `json:"content,omitempty"`
+	Publisher string      `json:"publisher,omitempty"`
+	TimeStamp int64       `json:"timeStamp,omitempty"`
+	TrxId     string      `json:"trxId,omitempty"`
+	TypeUrl   string      `json:"typeUrl,omitempty"`
 }
