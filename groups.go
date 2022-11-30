@@ -1,6 +1,9 @@
 package rumgosdk
 
 import (
+	"encoding/json"
+	"fmt"
+
 	"github.com/tymon42/rum-go-sdk/model"
 )
 
@@ -29,10 +32,52 @@ func (q *Quorum) ClearGroupData() error {
 func (q *Quorum) PostToGroup(param *model.PbActivity) (*model.HandlersTrxResult, error) {
 	url := q.ApiServer + "/api/v1/group/content"
 	res := &model.HandlersTrxResult{}
-	_, err := q.HttpClient.R().SetBody(param).SetResult(res).Post(url)
+	b, _ := json.Marshal(param)
+	fmt.Println("PostToGroup", string(b))
+	// jsonstring:=`{
+	// 	"type": "Add",
+	// 	"object": {
+	// 		"type": "Note",
+	// 		"content": "Good Morning!\nHave a nice day."
+	// 	},
+	// 	"target": {
+	// 		"id": "87ce7f91-2bcc-46e5-9d42-b64fe24d5220",
+	// 		"type": "Group"
+	// 	}
+	// }`
+	resp, err := q.HttpClient.R().SetBody(b).SetResult(res).Post(url)
 	if err != nil {
 		return nil, err
 	}
+	fmt.Println(resp)
+	fmt.Println("PostToGroup", res)
+	return res, nil
+}
+
+// PostToGroupWithPlainText posts object to group with plain text, /api/v1/group/content
+// param: GroupId, Content, Title
+// return: HandlersTrxResult
+func (q *Quorum) PostToGroupWithPlainText(groupId, title, content string) (*model.HandlersTrxResult, error) {
+	url := q.ApiServer + "/api/v1/group/content"
+	res := &model.HandlersTrxResult{}
+	jsonstring := `{
+		"type": "Add",
+		"object": {
+			"type": "Note",
+			"name": "` + title + `",
+			"content": "` + content + `"
+		},
+		"target": {
+			"id": "`+groupId+`",
+			"type": "Group"
+		}
+	}`
+	resp, err := q.HttpClient.R().SetBody(jsonstring).SetResult(res).Post(url)
+	if err != nil {
+		return nil, err
+	}
+	fmt.Println(resp)
+	fmt.Println("PostToGroup", res)
 	return res, nil
 }
 
