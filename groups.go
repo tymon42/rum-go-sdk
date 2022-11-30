@@ -72,12 +72,10 @@ func (q *Quorum) PostToGroupWithPlainText(groupId, title, content string) (*mode
 			"type": "Group"
 		}
 	}`
-	resp, err := q.HttpClient.R().SetBody(jsonstring).SetResult(res).Post(url)
+	_, err := q.HttpClient.R().SetBody(jsonstring).SetResult(res).Post(url)
 	if err != nil {
 		return nil, err
 	}
-	fmt.Println(resp)
-	fmt.Println("PostToGroup", res)
 	return res, nil
 }
 
