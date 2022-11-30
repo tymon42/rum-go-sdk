@@ -96,7 +96,7 @@ func (q *Quorum) JoinGroup(param model.HandlersGroupSeed) (*model.ApiJoinGroupRe
 // param: seed
 // return: apiJoinGroupResult
 func (q *Quorum) JoinGroupV2(param *model.HandlersJoinGroupParamV2) (*model.ApiJoinGroupResult, error) {
-	url := q.ApiServer + "/api/v1/group/join"
+	url := q.ApiServer + "/api/v2/group/join"
 	res := &model.ApiJoinGroupResult{}
 	_, err := q.HttpClient.R().SetBody(param).SetResult(res).Post(url)
 	if err != nil {
