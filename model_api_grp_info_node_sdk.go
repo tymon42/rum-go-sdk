@@ -8,11 +8,12 @@
  */
 
 package rum_sdk
+
 // ApiGrpInfoNodeSdk struct for ApiGrpInfoNodeSdk
 type ApiGrpInfoNodeSdk struct {
-	GroupId string `json:"group_id,omitempty"`
-	LatestUpdate int32 `json:"latest_update,omitempty"`
-	Owner string `json:"owner,omitempty"`
-	Provider string `json:"provider,omitempty"`
-	Singature string `json:"singature,omitempty"`
+	GroupId      string `json:"group_id,omitempty"`
+	LatestUpdate int64  `json:"latest_update,omitempty"`
+	Owner        string `json:"owner,omitempty"`
+	Provider     string `json:"provider,omitempty"`
+	Singature    string `json:"singature,omitempty"`
 }

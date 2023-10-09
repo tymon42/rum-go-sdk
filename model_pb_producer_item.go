@@ -8,14 +8,15 @@
  */
 
 package rum_sdk
+
 // PbProducerItem struct for PbProducerItem
 type PbProducerItem struct {
-	Action int32 `json:"Action,omitempty"`
-	GroupId string `json:"GroupId,omitempty"`
+	Action           int64  `json:"Action,omitempty"`
+	GroupId          string `json:"GroupId,omitempty"`
 	GroupOwnerPubkey string `json:"GroupOwnerPubkey,omitempty"`
-	GroupOwnerSign string `json:"GroupOwnerSign,omitempty"`
-	Memo string `json:"Memo,omitempty"`
-	ProducerPubkey string `json:"ProducerPubkey,omitempty"`
-	TimeStamp string `json:"TimeStamp,omitempty"`
-	WithnessBlocks int32 `json:"WithnessBlocks,omitempty"`
+	GroupOwnerSign   string `json:"GroupOwnerSign,omitempty"`
+	Memo             string `json:"Memo,omitempty"`
+	ProducerPubkey   string `json:"ProducerPubkey,omitempty"`
+	TimeStamp        string `json:"TimeStamp,omitempty"`
+	WithnessBlocks   int64  `json:"WithnessBlocks,omitempty"`
 }

@@ -8,10 +8,11 @@
  */
 
 package rum_sdk
+
 // HandlersAddPeerResult struct for HandlersAddPeerResult
 type HandlersAddPeerResult struct {
-	ErrCount int32 `json:"err_count,omitempty"`
+	ErrCount int64 `json:"err_count,omitempty"`
 	// Example: {\"/ip4/132.145.109.63/tcp/10666/p2p/16Uiu2HAmTovb8kAJiYK8saskzz7cRQhb45NRK5AsbtdmYsLfD3RM\": \"error info\"}
-	Error map[string]string `json:"error,omitempty"`
-	SuccCount int32 `json:"succ_count,omitempty"`
+	Error     map[string]string `json:"error,omitempty"`
+	SuccCount int64             `json:"succ_count,omitempty"`
 }

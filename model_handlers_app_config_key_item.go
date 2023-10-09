@@ -8,13 +8,14 @@
  */
 
 package rum_sdk
+
 // HandlersAppConfigKeyItem struct for HandlersAppConfigKeyItem
 type HandlersAppConfigKeyItem struct {
-	Memo string `json:"memo,omitempty"`
-	Name string `json:"name,omitempty"`
+	Memo        string `json:"memo,omitempty"`
+	Name        string `json:"name,omitempty"`
 	OwnerPubkey string `json:"ownerPubkey,omitempty"`
-	OwnerSign string `json:"ownerSign,omitempty"`
-	TimeStamp int32 `json:"timeStamp,omitempty"`
-	Type string `json:"type,omitempty"`
-	Value string `json:"value,omitempty"`
+	OwnerSign   string `json:"ownerSign,omitempty"`
+	TimeStamp   int64  `json:"timeStamp,omitempty"`
+	Type        string `json:"type,omitempty"`
+	Value       string `json:"value,omitempty"`
 }

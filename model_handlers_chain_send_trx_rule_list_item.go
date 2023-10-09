@@ -8,12 +8,13 @@
  */
 
 package rum_sdk
+
 // HandlersChainSendTrxRuleListItem struct for HandlersChainSendTrxRuleListItem
 type HandlersChainSendTrxRuleListItem struct {
-	GroupOwnerPubkey string `json:"groupOwnerPubkey"`
-	GroupOwnerSign string `json:"groupOwnerSign"`
-	Memo string `json:"memo,omitempty"`
-	Pubkey string `json:"pubkey"`
-	TimeStamp int32 `json:"timeStamp"`
-	TrxType []string `json:"trxType"`
+	GroupOwnerPubkey string   `json:"groupOwnerPubkey"`
+	GroupOwnerSign   string   `json:"groupOwnerSign"`
+	Memo             string   `json:"memo,omitempty"`
+	Pubkey           string   `json:"pubkey"`
+	TimeStamp        int64    `json:"timeStamp"`
+	TrxType          []string `json:"trxType"`
 }

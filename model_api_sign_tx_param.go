@@ -8,18 +8,19 @@
  */
 
 package rum_sdk
+
 // ApiSignTxParam struct for ApiSignTxParam
 type ApiSignTxParam struct {
 	// ChainID string, the number prefix determines the actual base
 	ChainId string `json:"chain_id"`
 	// Data hex encode string, include prefix string \"0x\"
-	Data string `json:"data"`
-	GasLimit int32 `json:"gas_limit,omitempty"`
+	Data     string `json:"data"`
+	GasLimit int64  `json:"gas_limit,omitempty"`
 	// GasPrice string, the number prefix determines the actual base
 	GasPrice string `json:"gas_price,omitempty"`
 	Keyalias string `json:"keyalias,omitempty"`
-	Keyname string `json:"keyname,omitempty"`
-	Nonce int32 `json:"nonce,omitempty"`
+	Keyname  string `json:"keyname,omitempty"`
+	Nonce    int64  `json:"nonce,omitempty"`
 	// eth address
 	To string `json:"to"`
 	// Value string, the number prefix determines the actual base

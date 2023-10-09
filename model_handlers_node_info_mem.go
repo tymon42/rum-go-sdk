@@ -8,19 +8,20 @@
  */
 
 package rum_sdk
+
 // HandlersNodeInfoMem struct for HandlersNodeInfoMem
 type HandlersNodeInfoMem struct {
 	// OS memory being used
-	HeapAlloc int32 `json:"heap_alloc,omitempty"`
+	HeapAlloc int64 `json:"heap_alloc,omitempty"`
 	// OS memory being used
-	HeapInuse int32 `json:"heap_inuse,omitempty"`
+	HeapInuse int64 `json:"heap_inuse,omitempty"`
 	// OS memory being used
-	HeapSys int32 `json:"heap_sys,omitempty"`
-	NumGc int32 `json:"num_gc,omitempty"`
+	HeapSys int64 `json:"heap_sys,omitempty"`
+	NumGc   int64 `json:"num_gc,omitempty"`
 	// OS memory being used
-	StackInuse int32 `json:"stack_inuse,omitempty"`
+	StackInuse int64 `json:"stack_inuse,omitempty"`
 	// OS memory being used
-	StackSys int32 `json:"stack_sys,omitempty"`
+	StackSys int64 `json:"stack_sys,omitempty"`
 	// OS memory being used
-	Sys int32 `json:"sys,omitempty"`
+	Sys int64 `json:"sys,omitempty"`
 }

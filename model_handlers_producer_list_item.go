@@ -8,11 +8,12 @@
  */
 
 package rum_sdk
+
 // HandlersProducerListItem struct for HandlersProducerListItem
 type HandlersProducerListItem struct {
-	BlockWithness int32 `json:"blockWithness,omitempty"`
-	OwnerPubkey string `json:"ownerPubkey,omitempty"`
-	OwnerSign string `json:"ownerSign,omitempty"`
+	BlockWithness  int64  `json:"blockWithness,omitempty"`
+	OwnerPubkey    string `json:"ownerPubkey,omitempty"`
+	OwnerSign      string `json:"ownerSign,omitempty"`
 	ProducerPubkey string `json:"producerPubkey,omitempty"`
-	TimeStamp int32 `json:"timeStamp,omitempty"`
+	TimeStamp      int64  `json:"timeStamp,omitempty"`
 }

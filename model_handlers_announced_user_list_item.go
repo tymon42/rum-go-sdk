@@ -8,12 +8,13 @@
  */
 
 package rum_sdk
+
 // HandlersAnnouncedUserListItem struct for HandlersAnnouncedUserListItem
 type HandlersAnnouncedUserListItem struct {
 	AnnouncedEncryptPubkey string `json:"announcedEncryptPubkey,omitempty"`
-	AnnouncedSignPubkey string `json:"announcedSignPubkey,omitempty"`
-	AnnouncerSign string `json:"announcerSign,omitempty"`
-	Memo string `json:"memo,omitempty"`
-	Result string `json:"result,omitempty"`
-	TimeStamp int32 `json:"timeStamp,omitempty"`
+	AnnouncedSignPubkey    string `json:"announcedSignPubkey,omitempty"`
+	AnnouncerSign          string `json:"announcerSign,omitempty"`
+	Memo                   string `json:"memo,omitempty"`
+	Result                 string `json:"result,omitempty"`
+	TimeStamp              int64  `json:"timeStamp,omitempty"`
 }

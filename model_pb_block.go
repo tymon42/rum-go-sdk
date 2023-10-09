@@ -8,16 +8,17 @@
  */
 
 package rum_sdk
+
 // PbBlock struct for PbBlock
 type PbBlock struct {
-	BlockHash []int32 `json:"BlockHash,omitempty"`
-	BlockId int32 `json:"BlockId,omitempty"`
-	Epoch int32 `json:"Epoch,omitempty"`
-	GroupId string `json:"GroupId,omitempty"`
-	PrevHash []int32 `json:"PrevHash,omitempty"`
-	ProducerPubkey string `json:"ProducerPubkey,omitempty"`
-	ProducerSign []int32 `json:"ProducerSign,omitempty"`
-	Sudo bool `json:"Sudo,omitempty"`
-	TimeStamp string `json:"TimeStamp,omitempty"`
-	Trxs []PbTrx `json:"Trxs,omitempty"`
+	BlockHash      []int64 `json:"BlockHash,omitempty"`
+	BlockId        int64   `json:"BlockId,omitempty"`
+	Epoch          int64   `json:"Epoch,omitempty"`
+	GroupId        string  `json:"GroupId,omitempty"`
+	PrevHash       []int64 `json:"PrevHash,omitempty"`
+	ProducerPubkey string  `json:"ProducerPubkey,omitempty"`
+	ProducerSign   []int64 `json:"ProducerSign,omitempty"`
+	Sudo           bool    `json:"Sudo,omitempty"`
+	TimeStamp      string  `json:"TimeStamp,omitempty"`
+	Trxs           []PbTrx `json:"Trxs,omitempty"`
 }

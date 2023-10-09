@@ -8,13 +8,14 @@
  */
 
 package rum_sdk
+
 // HandlersAnnouncedProducerListItem struct for HandlersAnnouncedProducerListItem
 type HandlersAnnouncedProducerListItem struct {
 	// ACTION have 2 states: \"ADD\" means Producer is normal, \"REMOVE\" means Producer has announced to leave the group by itself
-	Action string `json:"action"`
+	Action          string `json:"action"`
 	AnnouncedPubkey string `json:"announcedPubkey"`
-	AnnouncerSign string `json:"announcerSign"`
-	Memo string `json:"memo"`
-	Result string `json:"result"`
-	TimeStamp int32 `json:"timeStamp"`
+	AnnouncerSign   string `json:"announcerSign"`
+	Memo            string `json:"memo"`
+	Result          string `json:"result"`
+	TimeStamp       int64  `json:"timeStamp"`
 }

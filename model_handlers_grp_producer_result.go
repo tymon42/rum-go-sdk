@@ -8,11 +8,12 @@
  */
 
 package rum_sdk
+
 // HandlersGrpProducerResult struct for HandlersGrpProducerResult
 type HandlersGrpProducerResult struct {
-	FailableProducers int32 `json:"failable_producers"`
-	GroupId string `json:"group_id"`
-	Memo string `json:"memo,omitempty"`
-	Producers []PbProducerItem `json:"producers,omitempty"`
-	TrxId string `json:"trx_id"`
+	FailableProducers int64            `json:"failable_producers"`
+	GroupId           string           `json:"group_id"`
+	Memo              string           `json:"memo,omitempty"`
+	Producers         []PbProducerItem `json:"producers,omitempty"`
+	TrxId             string           `json:"trx_id"`
 }

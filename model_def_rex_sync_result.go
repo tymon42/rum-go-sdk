@@ -8,12 +8,13 @@
  */
 
 package rum_sdk
+
 // DefRexSyncResult struct for DefRexSyncResult
 type DefRexSyncResult struct {
-	BlockProvided int32 `json:"blockProvided,omitempty"`
-	FromBlock int32 `json:"fromBlock,omitempty"`
-	LastSyncTaskTimestamp int32 `json:"lastSyncTaskTimestamp,omitempty"`
-	NextSyncTaskTimeStamp int32 `json:"nextSyncTaskTimeStamp,omitempty"`
-	Provider string `json:"provider,omitempty"`
-	SyncResult string `json:"syncResult,omitempty"`
+	BlockProvided         int64  `json:"blockProvided,omitempty"`
+	FromBlock             int64  `json:"fromBlock,omitempty"`
+	LastSyncTaskTimestamp int64  `json:"lastSyncTaskTimestamp,omitempty"`
+	NextSyncTaskTimeStamp int64  `json:"nextSyncTaskTimeStamp,omitempty"`
+	Provider              string `json:"provider,omitempty"`
+	SyncResult            string `json:"syncResult,omitempty"`
 }
