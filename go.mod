@@ -1,7 +1,7 @@
-module github.com/tymon42/rum-go-sdk
+module github.com/GIT_USER_ID/GIT_REPO_ID
 
-go 1.17
-
-require github.com/go-resty/resty/v2 v2.7.0
-
-require golang.org/x/net v0.1.0 // indirect
+require (
+	github.com/antihax/optional v1.0.0
+	golang.org/x/oauth2 v0.0.0-20190604053449-0f29369cfe45
+	
+)
